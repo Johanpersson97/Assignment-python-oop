@@ -2,7 +2,6 @@ from animal import Animal
 from cat import Cat
 from horse import Horse
 
-
 class Barn:
 
     ANIMALS = [Cat, Horse]
@@ -20,5 +19,5 @@ class Barn:
         for animal in self.animals:
             if animal.get_name() == removeAnimal:
                 self.animals.remove(animal)
-            return True
+                return True
         return False

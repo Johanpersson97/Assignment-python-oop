@@ -8,7 +8,6 @@ class Farm:
     def __init__(self) -> None:
         self.barn = Barn()
         self.menu()
-        self.animal:Animal = Animal()
         
     def menu(self) -> None:
         print("Welcome to the barn!")
@@ -66,6 +65,9 @@ class Farm:
 		
         if self.barn.remove_animal(removeAnimal) == True:
             print(f"Animal named {removeAnimal} have been removed!")
+        
+        else:
+            print("Djuret existerar inte, vänligen ange ett korrekt namn!")
     
     def print_animals(self) -> None:
         if len(self.barn.get_animal()) == 0:
