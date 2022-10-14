@@ -1,7 +1,9 @@
 from animal import Animal
 
 class Cat(Animal):
-    
+    '''
+    Inherits from the Animal Class
+    '''
     def __init__(self, name:str, age:int, weight:float) -> None:
         super().__init__(name, age, weight)
         
