@@ -15,7 +15,7 @@ class Animal:
         '''
         Sets the name of an animal
         '''
-        self.name.append(newName)
+        self.name = newName
             
     def get_age(self) -> int:
         '''
@@ -27,7 +27,19 @@ class Animal:
         '''
         Sets the age of an animal
         '''
-        self.age.append(newAge)
+        self.age = newAge
+
+    def get_weight(self) -> float:
+        '''
+        Returns the weight of an animal
+        '''
+        return self.weight
+
+    def set_weight(self, newWeight:float) -> None:
+        '''
+        Sets the weight of the animal
+        '''
+        self.weight = newWeight
 
     @classmethod
     def create(cls) -> any:

@@ -1,4 +1,5 @@
 from collections import UserString
+from email.charset import add_alias
 from barn import Barn
 from horse import Horse
 from cat import Cat
@@ -12,7 +13,7 @@ class Ranch:
         
     def menu(self) -> None:
         '''
-        Takes the user choice as an input and returns different functions
+        Takes the user choice as an input and then runs different functions
         '''
         print("Welcome to the barn!")
         userChoice = None
@@ -22,16 +23,36 @@ class Ranch:
             print("-"*30)
             
             if userChoice == "1":
-                self.add_animal()
-                
+                userChoice = None
+                while userChoice != "0":
+                    self.print_animal_menu()
+                    userChoice = input("Choice: ")
+                    if userChoice == "1":
+                        self.add_animal()
+
+                    elif userChoice == "2":
+                        self.edit_animal()
+
+                    elif userChoice == "3":
+                        self.remove_animal()
+
+                    elif userChoice == "4":
+                        self.print_animals()
+
+                    elif userChoice == "5":
+                        self.menu()
+                    
+                    elif userChoice == "0":
+                        print("Goodbye, come back soon!")
+
             elif userChoice == "2":
-                self.set_name()
+                self.print_building_menu()
                 
             elif userChoice == "3":
-                self.remove_animal()
+                pass
                 
             elif userChoice == "4":
-                self.print_animals()
+                pass
                 
             elif userChoice == "5":
                 pass
@@ -48,11 +69,31 @@ class Ranch:
         '''
         print("\nMenu")
         print("-"*30)
+        print("1) Animal menu")
+        print("2) Building menu")
+        print("3) ")
+        print("0) Exit")
+        print("-"*30)
+
+    def print_animal_menu(self) -> None:
+        print("\nAnimal Menu")
+        print("-"*30)
         print("1) Add animal")
-        print("2) ")
+        print("2) Edit animal")
         print("3) Remove animal")
         print("4) List animals in the barn")
-        print("5) Make them talk!")
+        print("5) Main menu")
+        print("0) Exit")
+        print("-"*30)
+
+    def print_building_menu(self) -> None:
+        print("\nAnimal Menu")
+        print("-"*30)
+        print("1) Add building")
+        print("2) Edit building")
+        print("3) Remove building")
+        print("4) List buildings")
+        print("5) Main menu")
         print("0) Exit")
         print("-"*30)
     
@@ -87,14 +128,21 @@ class Ranch:
             print(f"Animal named {removeAnimal} have been removed!")
         
         else:
-            print("Djuret existerar inte, vänligen ange ett korrekt namn!")
+            print("That animal doesn't exist, please choose again")
 
-    def set_name (self) -> None:
+    def edit_animal (self) -> None:
+        '''
+        lets the user choose an animal to edit, then change their name, age and weight
+        '''
         print("Which name would you like to change?")
-        userInput = input("Name: ")
-        newName = userInput
+        editAnimal = input("Name: ")
 
-        return newName
+        newName = input("Change name: ")
+        newAge = int(input("Change Age: "))
+        newWeight = input("Change weight: ")
+
+        if self.barn.edit_animal(editAnimal, newName, newAge, newWeight) == True:
+            print("The animal has been edited!")
 
     def print_animals(self) -> None:
         '''
