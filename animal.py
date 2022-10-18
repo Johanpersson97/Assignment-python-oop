@@ -1,4 +1,7 @@
 class Animal:
+    '''
+    lets the user create new animals, or get/ set information about them
+    '''
     
     def __init__(self, name:str, age:int, weight:float) -> None:
         self.name:str = name
@@ -16,7 +19,7 @@ class Animal:
         Sets the name of an animal
         '''
         self.name = newName
-            
+    
     def get_age(self) -> int:
         '''
         Returns the age of an animal
@@ -50,6 +53,7 @@ class Animal:
         animalName = input("Name: ")
         animalAge = int(input("Age: "))
         animalWeight = input("Weight: ")
+        
         return cls(animalName, animalAge, animalWeight)
 
     def __str__(self) -> str:

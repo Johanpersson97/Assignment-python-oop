@@ -6,7 +6,7 @@ class Horse(Animal):
     '''
     def __init__(self, name:str, age:int, weight:float) -> None:
         super().__init__(name, age, weight)
-        
+
     def talk(self) -> str:
         return f"Neigh"
 
