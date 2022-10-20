@@ -75,7 +75,7 @@ class Barn:
         return foundAnimals
 
     def add_building(self, building:any) -> None:
-        self.append(building)
+        self.buildings.append(building)
 
     def get_building(self) -> list:
         return self.buildings
