@@ -30,18 +30,21 @@ class Barn:
         Garage("Garage", 12, 9, 500000),
         Machine_hall("Machine hall", 20, 15, 400000)
         ]
-        
+
+
     def add_animal(self, animal:any) -> None:
         '''
         Appends an animal to the list
         '''
         self.animals.append(animal)
 
+
     def get_animal(self) -> list:
         '''
         Returns a list of animals in the barn 
         '''
         return self.animals
+
 
     def edit_animal(self, editAnimal:str, newName:str, newAge:int, newWeight:float) -> bool:
         '''
@@ -56,6 +59,7 @@ class Barn:
                 return True
         return False
 
+
     def remove_animal(self, removeAnimal:str) -> bool:
         '''
         Removes an animal from the list
@@ -66,7 +70,11 @@ class Barn:
                 return True
         return False
 
+
     def search_animal(self, searchString:str) -> list:
+        '''
+        Takes the users search as an argument and returns a list if the user 
+        '''
         foundAnimals = []
         for animal in self.animals:
             if searchString in animal.name:
@@ -74,15 +82,43 @@ class Barn:
 
         return foundAnimals
 
+
     def add_building(self, building:any) -> None:
-        self.append(building)
+        '''
+        appends a building to the list
+        '''
+        self.buildings.append(building)
+
 
     def get_building(self) -> list:
+        '''
+        returns a list of buildings
+        '''
         return self.buildings
 
+
     def edit_building(self, editBuilding, newName:str, newLength:int, newWidth:int, newValue:int) -> bool:
-        pass
+        '''
+        Lets the user edit an existing building
+        '''
+        for building in self.buildings:
+            if building.get_name() == editBuilding:
+                building.set_name(newName)
+                building.set_length(newLength)
+                building.set_width(newWidth)
+                building.set_value(newValue)
+                print("-"*20)
+                print("Success!")
+                return True
+        return False
+
 
     def remove_building(self, removeBuilding:str) -> bool:
-        pass
-
+        '''
+        Takes removeBuilding as an argument and removes it if it exists in the list of buildings.
+        '''
+        for building in self.buildings:
+            if building.get_name() == removeBuilding:
+                self.buildings.remove(building)
+                return True
+        return False
